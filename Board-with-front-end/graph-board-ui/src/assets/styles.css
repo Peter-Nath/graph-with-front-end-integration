@@ -1,0 +1,258 @@
+/* 
+Mayowa Obisesan
+Wallet Integration
+September 15, 2023.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Inclusive Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    display: block;
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 180px;
+    left: -20%;
+    height: 800px;
+    width: 820px;
+    filter: blur(80px);
+    opacity: .2;
+    background: dodgerblue;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    top: -40px;
+    right: -20%;
+    height: 800px;
+    width: 820px;
+    filter: blur(108px);
+    opacity: .2;
+    background: gold;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    /* background: silver; */
+}
+
+.loading-alert {
+    border-radius: 16px;
+    position: relative;
+    display: block;
+    margin: 8px auto;
+    background-color: black;
+    color: white;
+    height: 96px;
+    line-height: 96px;
+    width: 240px;
+    text-align: center;
+    font-size: 24px;
+    transition: all ease-in .4s;
+}
+
+.error-alert {
+    border-radius: 16px;
+    position: relative;
+    display: block;
+    margin: 8px auto;
+    background-color: tomato;
+    color: white;
+    height: 96px;
+    line-height: 96px;
+    width: 240px;
+    text-align: center;
+    font-size: 24px;
+    transition: all ease-in .4s;
+}
+
+.ask-login-message {
+    font-size: 20px;
+}
+
+/* BOARD STYLESHEET */
+.board {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    /* background: purple; */
+    width: 40%;
+    margin: 40px auto;
+}
+
+.board .row {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.board .cell {
+    border: 1px solid gray;
+    border-radius: 4px;
+    position: relative;
+    width: 96px;
+    height: 96px;
+    /* background: orange; */
+    border: 1px solid darkgray;
+}
+
+.board .cell:disabled {
+    width: 64px;
+    height: 64px;
+    background-color: #EEE;
+    border: 1px solid lightgray;
+    cursor: not-allowed;
+}
+
+.board .cell:not(:disabled) {
+    transition: margin cubic-bezier(0.075, 0.82, 0.165, 1) .8s,
+        transform ease-in-out .2s,
+        height ease-in .8s,
+        width ease-in .8s;
+}
+
+.board:hover .cell:not(:disabled) {
+    margin: 2px 4px;
+}
+
+.row .cell:hover {
+    transition: transform ease-in-out .2s;
+}
+
+.row .cell:not(:disabled):hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer;
+}
+
+/* NAV */
+.container nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    height: 108px;
+    line-height: 108px;
+    padding: 0 32px;
+    backdrop-filter: blur(4px);
+    background: #FFFFFF88;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.container nav .nav-connect-button {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 18px;
+}
+
+.main-container {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    /* height: 100%; */
+    /* background-color: brown; */
+}
+
+.connect-button-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 0px;
+}
+
+.input-container div {
+    display: block;
+    margin: 0px 24px;
+}
+
+.input-container label {
+    display: block;
+    padding: 12px 4px;
+    font-size: 20px;
+}
+
+.input-container input {
+    outline: 0;
+    border: 2px solid darkgray;
+    border-radius: 8px;
+    width: 320px;
+    height: 64px;
+    line-height: 64px;
+    padding: 0 16px;
+    font-size: 40px;
+    transition: transform ease-out .2s;
+}
+
+.input-container input:disabled {
+    opacity: .6;
+    transform: scale(0.8, 0.8);
+}
+
+.input-container button {
+    border: 0;
+    border-radius: 8px;
+    display: block;
+    width: 120px;
+    height: 64px;
+    line-height: 64px;
+    background: dodgerblue;
+    color: white;
+    font-weight: bold;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.input-container button:focus {
+    background: darkblue;
+}
+
+.input-container button:disabled {
+    opacity: .6;
+    width: 96px;
+    height: 48px;
+    line-height: 48px;
+    cursor: not-allowed;
+}
+
+footer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 10px;
+    width: 100%;
+    text-align: center;
+}
+
+footer .div {
+    text-align: center;
+    background: green;
+}
