@@ -3,7 +3,7 @@ pragma solidity 0.8.19;
 
 import "hardhat/console.sol";
 
-contract ColorBoard {
+contract CBoard {
     uint[7][5] public cells;
 
     string[3] colorNames = ["white", "red", "black"];
